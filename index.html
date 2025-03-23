@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ineedhelponmytest's Website</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            background-size: 300% 300%;
+            animation: gradientAnimation 50s ease-in-out infinite;
+            color: white;
+            font-family: monospace;
+            text-align: center;
+            padding: 20px;
+        }
+        .about {
+            max-width: 400px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #333333, #444444);
+			padding: 25px;
+            padding-left: 100px;
+			padding-right: 100px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background: linear-gradient(135deg, #333333, #444444);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            width: 100%;
+            max-width: 400px;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        button {
+            background: white;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #b0b0b0;
+        }
+		
+		a {
+			color: white;
+		}
+		
+		h1 {
+			font-size: 50px;
+		}
+		
+		h2 {
+			font-size: 25px;
+		}
+		
+		
+    </style>
+</head>
+<body>
+    <h1>Hello, I am ineedhelponmytest!</h1>
+	<br>
+	<br>
+	<br>
+    <div class="about">
+        <h2>About Me</h2>
+        <p>I am 14 y/o website dev and a music producer, from the United States. I make random stuff in html and electronic music in FL Studio as a hobby. Go check out my <a href="https://soundcloud.com/1dkaa">SoundCloud</a> and <a href="https://open.spotify.com/artist/0x0bRJ3Q93VK92hUGXnztf?si=z7BtuzBfSLiL9mGLmn3fWg&nd=1&dlsi=7c37dd99a3ee4da7">Spotify!</a></p>
+    </div>
+	<br>
+	<br>
+	<br>
+    <div class="container">
+        <div class="card">
+            <h2>SinePrank</h2>
+            <p>Play a high-pitched noise to prank your class.</p>
+            <a><button>View SinePrank</button></a>
+        </div>
+		<br>
+        <div class="card">
+            <h2>Browser Pong</h2>
+			<p>Pong in remade and redesigned in html!</p>
+            <button>View Browser Pong</button>
+        </div>
+		<br>
+    </div>
+</body>
+</html>
