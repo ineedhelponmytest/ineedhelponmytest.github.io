@@ -1,124 +1,732 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ineedhelponmytest's Website</title>
-    <style>
-        body {
-            background: #1a1a1a;
-            background-size: 300% 300%;
-            animation: gradientAnimation 50s ease-in-out infinite;
-            color: white;
-            font-family: monospace;
-            text-align: center;
-            padding: 20px;
-        }
-        .about {
-            max-width: 400px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, #333333, #444444);
-			padding: 25px;
-            padding-left: 100px;
-			padding-right: 100px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .card {
-            background: linear-gradient(135deg, #333333, #444444);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-            width: 100%;
-            max-width: 400px;
-        }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        button {
-            background: white;
-            color: black;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #b0b0b0;
-        }
-		
-		a {
-			color: white;
-		}
-		
-		h1 {
-			font-size: 50px;
-		}
-		
-		h2 {
-			font-size: 25px;
-		}
-		
-		
-    </style>
+  <title>INEEDHELPONMYTEST.COM</title>
+  <style>
+    * {
+      transition: all 0.5s ease;
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      cursor: url("https://emojicdn.elk.sh/🤡"), auto;
+      overflow-x: hidden;
+      background-color: black;
+      animation: flicker 1s infinite alternate;
+      position: relative;
+      height: 100vh;
+      overflow-y: scroll;
+      user-select: none;
+    }
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+    }
+    section {
+      flex: 1 1 30%;
+      min-width: 300px;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 5px 5px 10px red;
+      transform: rotate(1deg);
+      animation: chaosAnim 2s infinite alternate;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    section:hover {
+      background-color: #ff00ff !important;
+      color: yellow !important;
+      animation: shake 0.3s infinite;
+    }
+    h2 {
+      font-size: 2em;
+      margin: 0;
+      animation: bounce 0.8s infinite alternate;
+      cursor: default;
+      user-select: none;
+    }
+    h2:hover {
+      animation: none;
+      font-family: cursive, "Comic Sans MS", Papyrus !important;
+      color: lime !important;
+    }
+    p {
+      font-size: 1.2em;
+    }
+    .marquee {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      background: magenta;
+      color: white;
+      font-weight: bold;
+      font-size: 2em;
+      animation: scrollText 10s linear infinite;
+      z-index: 9999;
+      user-select: none;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    @keyframes chaosAnim {
+      0% { transform: rotate(1deg) scale(1); }
+      50% { transform: rotate(-5deg) scale(1.1); }
+      100% { transform: rotate(5deg) scale(0.9); }
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+    @keyframes flicker {
+      0% { background-color: black; }
+      100% { background-color: darkred; }
+    }
+    button {
+      padding: 10px;
+      background: red;
+      color: white;
+      border: 3px double cyan;
+      font-size: 1em;
+      animation: pulse 1s infinite;
+      transform: rotate(10deg);
+      cursor: pointer;
+      user-select: none;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: lime;
+      color: black;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1) rotate(10deg); }
+      50% { transform: scale(1.2) rotate(-10deg); }
+      100% { transform: scale(1) rotate(10deg); }
+    }
+    .rotated {
+      transform: rotate(180deg);
+    }
+    .sideways {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+    .tooltip {
+      position: relative;
+    }
+    .tooltip:hover::after {
+      content: "Dangerous!";
+      position: absolute;
+      background: red;
+      color: white;
+      padding: 5px;
+      top: -30px;
+      left: 0;
+      font-size: 0.8em;
+      z-index: 999;
+      user-select: none;
+    }
+    /* Popup styles */
+    .popup {
+      position: fixed;
+      background: black;
+      border: 3px solid red;
+      box-shadow: 0 0 15px 5px magenta;
+      color: lime;
+      width: 300px;
+      padding: 15px;
+      font-family: "Comic Sans MS", cursive;
+      z-index: 10000;
+      animation: popupBounce 1s ease forwards;
+      user-select: none;
+    }
+    .popup h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.5em;
+      color: yellow;
+      animation: shake 0.3s infinite;
+      user-select: none;
+    }
+    .popup p {
+      font-size: 1em;
+      color: white;
+      user-select: none;
+    }
+    .popup .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 7px;
+      color: red;
+      background: black;
+      border: none;
+      font-weight: bold;
+      font-size: 1.5em;
+      cursor: pointer;
+      user-select: none;
+      padding: 0 5px;
+      line-height: 1;
+      border-radius: 3px;
+      box-shadow: 0 0 8px 1px red;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes popupBounce {
+      0% { transform: translateY(-100vh) scale(0); opacity: 0; }
+      60% { transform: translateY(10px) scale(1.1); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    @keyframes shake {
+      0%, 100% { transform: translate(0); }
+      25% { transform: translate(-2px, 2px); }
+      50% { transform: translate(2px, -2px); }
+      75% { transform: translate(-2px, -2px); }
+    }
+    @keyframes spinZoom {
+      0% { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1.3) rotate(360deg); }
+    }
+    @keyframes seizure {
+      0% { background-color: red; }
+      25% { background-color: lime; }
+      50% { background-color: blue; }
+      75% { background-color: yellow; }
+      100% { background-color: purple; }
+    }
+    @keyframes vibrate {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-2px); }
+      100% { transform: translateX(2px); }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    /* Confetti styles */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: confettiFall linear forwards;
+      z-index: 20000;
+    }
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RQPJ2KQE95"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<body>
 
-  gtag('config', 'G-RQPJ2KQE95');
+<div class="marquee">🔥🔥 WELCOME TO THE INTERNET >:D 🔥🔥</div>
+
+<div id="container"></div>
+
+<script>
+  const themes = [
+    {
+      background: 'repeating-linear-gradient(45deg, red, yellow 10px, lime 20px)',
+      font: 'Comic Sans MS',
+      color: 'hotpink',
+      border: '5px dashed red',
+      animation: 'shake 0.2s infinite'
+    },
+    {
+      background: 'url("https://media.tenor.com/9R4Lwfs-nusAAAAC/rainbow.gif")',
+      font: 'Papyrus',
+      color: 'cyan',
+      border: '4px double cyan',
+      animation: 'spinZoom 2s infinite'
+    },
+    {
+      background: 'linear-gradient(to right, black, magenta, black)',
+      font: '"Brush Script MT", cursive',
+      color: 'lime',
+      border: '6px ridge green',
+      animation: 'vibrate 0.2s infinite'
+    },
+    {
+      background: 'url("https://i.imgur.com/ZUHRCHh.png") repeat',
+      font: '"Chiller", fantasy',
+      color: 'deepskyblue',
+      border: '5px dotted blue',
+      animation: 'pulse 1s infinite'
+    },
+    {
+      background: 'url("https://media.tenor.com/h6T-lq5pGdIAAAAC/static-noise.gif") repeat',
+      font: 'Webdings',
+      color: '#00ff00',
+      border: '5px dashed #00ff00',
+      animation: 'seizure 0.5s infinite'
+    },
+    {
+      background: 'conic-gradient(from 0deg, red, orange, yellow, green, blue, indigo, violet, red)',
+      font: 'Impact, sans-serif',
+      color: 'white',
+      border: '7px double gold',
+      animation: 'spinZoom 3s linear infinite'
+    },
+    {
+      background: 'radial-gradient(circle, pink, purple, black)',
+      font: '"Lucida Handwriting", cursive',
+      color: 'lime',
+      border: '4px dotted magenta',
+      animation: 'pulse 1.5s infinite'
+    },
+    {
+      background: 'repeating-linear-gradient(90deg, cyan, magenta 15px, yellow 30px)',
+      font: 'Arial Black, Gadget, sans-serif',
+      color: 'black',
+      border: '6px groove orange',
+      animation: 'shake 0.1s infinite'
+    },
+    {
+      background: 'url("https://www.transparenttextures.com/patterns/meat.png") repeat',
+      font: '"Chiller", fantasy',
+      color: 'white',
+      border: '5px ridge red',
+      animation: 'vibrate 0.4s infinite'
+    },
+    {
+      background: 'url("https://www.transparenttextures.com/patterns/fake-brick.png") repeat',
+      font: '"Creepster", cursive',
+      color: 'tomato',
+      border: '6px dashed black',
+      animation: 'pulse 0.6s infinite'
+    },
+    {
+      background: 'linear-gradient(135deg, #ff0, #f06, #0ff)',
+      font: 'Courier New, monospace',
+      color: 'navy',
+      border: '8px double teal',
+      animation: 'seizure 0.4s infinite'
+    },
+    {
+      background: 'url("https://i.imgur.com/LUOYO9D.jpeg") repeat',
+      font: 'Verdana, Geneva, sans-serif',
+      color: 'blue',
+      border: '5px solid lime',
+      animation: 'spinZoom 2s infinite'
+    },
+    {
+      background: 'repeating-radial-gradient(circle, #f0f, #0ff 15px, #ff0 30px)',
+      font: 'Georgia, serif',
+      color: 'black',
+      border: '4px dotted purple',
+      animation: 'pulse 1.2s infinite'
+    },
+    {
+      background: 'linear-gradient(60deg, black 30%, white 30%, white 60%, black 60%)',
+      font: '"Lucida Console", monospace',
+      color: 'hotpink',
+      border: '7px ridge lime',
+      animation: 'shake 0.3s infinite'
+    },
+    {
+      background: 'url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaW5zNXRuZGh4ZG0wenFkM2pycm1mZGFkN3ZsbGFrcDVuNHVwd2NybSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jwKC0qlOoXmcLDB4vC/giphy.gif") repeat',
+      font: '"Comic Sans MS", cursive',
+      color: 'yellow',
+      border: '8px double red',
+      animation: 'vibrate 0.3s infinite'
+    },
+    {
+      background: 'repeating-linear-gradient(30deg, lime, yellow 10px, red 20px)',
+      font: '"Courier Prime", monospace',
+      color: 'black',
+      border: '6px dotted orange',
+      animation: 'pulse 0.8s infinite'
+    },
+    {
+      background: 'url("https://media.tenor.com/h6T-lq5pGdIAAAAC/static-noise.gif") repeat',
+      font: '"Webdings", sans-serif',
+      color: '#00ff00',
+      border: '5px dashed #00ff00',
+      animation: 'seizure 0.5s infinite'
+    }
+  ];
+
+  const titles = [
+    "Banana Alert", "Error Log", "Quantum Pickle", "Gnome Watch",
+    "Clown News", "Meme Analysis", "Shoe Politics", "Forbidden Knowledge",
+    "404: Thoughts Not Found", "Potato Status", "Reverse Sandwich Index",
+    "Unicorn Threat Level", "Illegal Sock Report", "Mood Rotator",
+    "Cursed Update", "Eyeball Tracker", "Moon Cheese Brief", "Duck Formation Status"
+  ];
+
+  const messages = [
+    "System unstable. Hug your router.",
+    "Vibes are off. Try again later.",
+    "Do not lick the server.",
+    "Content has been cursed.",
+    "Refresh to reboot the multiverse.",
+    "Warning: socks unsynchronized.",
+    "You're being watched by 5 ducks.",
+    "Activate cheese mode?",
+    "Staring contest with void: Lost.",
+    "Binary whispering detected.",
+    "Remove USB banana immediately.",
+    "Please ignore this warning."
+  ];
+
+  function randomChoice(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function createSection() {
+    const section = document.createElement("section");
+    const h2 = document.createElement("h2");
+    const p = document.createElement("p");
+
+    h2.textContent = randomChoice(titles);
+    p.textContent = randomChoice(messages);
+
+    if (Math.random() > 0.8) h2.classList.add("tooltip");
+    if (Math.random() > 0.6) section.classList.add("rotated");
+    if (Math.random() > 0.7) section.classList.add("sideways");
+
+    section.appendChild(h2);
+    section.appendChild(p);
+
+    // Pick a random theme for this section
+    const theme = randomChoice(themes);
+    section.style.background = theme.background;
+    section.style.fontFamily = theme.font;
+    section.style.color = theme.color;
+    section.style.border = theme.border;
+    section.style.animation = theme.animation;
+
+    if (Math.random() > 0.6) {
+      const btn = document.createElement("button");
+      btn.textContent = "Explode";
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        spawnMiniPopup(section);
+      };
+      section.appendChild(btn);
+    }
+
+    // Shake on click
+    section.addEventListener('click', () => {
+      section.style.animation = 'shake 0.5s 4';
+      setTimeout(() => {
+        section.style.animation = theme.animation;
+      }, 2000);
+    });
+
+    return section;
+  }
+
+  function applyRandomThemeToBody() {
+    const theme = randomChoice(themes);
+    document.body.style.background = theme.background;
+    document.body.style.color = theme.color;
+    document.body.style.fontFamily = theme.font;
+  }
+
+  function populate() {
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+
+    for (let i = 0; i < 30; i++) {
+      container.appendChild(createSection());
+    }
+  }
+
+  function randomPopup() {
+    const popupTexts = [
+      {title: "System Warning!", text: "Your vibes are dangerously low."},
+      {title: "Error 666", text: "Banana peel on server floor."},
+      {title: "Notice", text: "You have been cursed by bad design."},
+      {title: "Heads up!", text: "Socks not matching. Risk level: high."},
+      {title: "Alert!", text: "Your cursor is a clown. Embrace it."},
+      {title: "404 Fun Fact", text: "Clowns prefer purple over red."}
+    ];
+
+    const popupData = randomChoice(popupTexts);
+
+    const popup = document.createElement("div");
+    popup.classList.add("popup");
+
+    popup.style.top = (50 + Math.random() * (window.innerHeight - 300)) + "px";
+    popup.style.left = (50 + Math.random() * (window.innerWidth - 350)) + "px";
+
+    const h3 = document.createElement("h3");
+    h3.textContent = popupData.title;
+    popup.appendChild(h3);
+
+    const p = document.createElement("p");
+    p.textContent = popupData.text;
+    popup.appendChild(p);
+
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "✖";
+    closeBtn.classList.add("close-btn");
+    closeBtn.onclick = () => popup.remove();
+    popup.appendChild(closeBtn);
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+      if (popup.parentNode) popup.remove();
+    }, 10000 + Math.random() * 5000);
+  }
+
+  // Spawn mini popup for Explode button
+  function spawnMiniPopup(parentSection) {
+    const miniPopup = document.createElement('div');
+    miniPopup.classList.add('popup');
+    miniPopup.style.width = '180px';
+    miniPopup.style.height = '100px';
+
+    // Position near the section, but random offset
+    const rect = parentSection.getBoundingClientRect();
+    miniPopup.style.top = (window.scrollY + rect.top + rect.height / 2 + (Math.random() * 100 - 50)) + "px";
+    miniPopup.style.left = (window.scrollX + rect.left + rect.width / 2 + (Math.random() * 100 - 50)) + "px";
+
+    const h3 = document.createElement('h3');
+    h3.textContent = "Mini Boom!";
+    miniPopup.appendChild(h3);
+
+    const p = document.createElement('p');
+    p.textContent = "You triggered a mini popup!";
+    miniPopup.appendChild(p);
+
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = "✖";
+    closeBtn.classList.add('close-btn');
+    closeBtn.onclick = () => miniPopup.remove();
+    miniPopup.appendChild(closeBtn);
+
+    document.body.appendChild(miniPopup);
+
+    setTimeout(() => {
+      if (miniPopup.parentNode) miniPopup.remove();
+    }, 7000);
+  }
+
+  // Confetti generator
+  function createConfetti(x, y) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.backgroundColor = randomChoice(['red', 'yellow', 'lime', 'cyan', 'magenta', 'orange', 'white']);
+    confetti.style.left = x + 'px';
+    confetti.style.top = y + 'px';
+    confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 4000);
+  }
+
+  // Confetti burst on click anywhere
+  window.addEventListener('click', e => {
+    for(let i = 0; i < 30; i++) {
+      setTimeout(() => {
+        createConfetti(e.clientX + (Math.random()*100-50), e.clientY + (Math.random()*100-50));
+      }, i * 30);
+    }
+  });
+
+  // Cursor trail
+  const colors = ['red', 'yellow', 'lime', 'cyan', 'magenta', 'orange', 'white'];
+  window.addEventListener('mousemove', e => {
+    const trail = document.createElement('div');
+    trail.style.position = 'fixed';
+    trail.style.width = '8px';
+    trail.style.height = '8px';
+    trail.style.borderRadius = '50%';
+    trail.style.backgroundColor = randomChoice(colors);
+    trail.style.left = e.clientX + 'px';
+    trail.style.top = e.clientY + 'px';
+    trail.style.pointerEvents = 'none';
+    trail.style.zIndex = 15000;
+    trail.style.opacity = '0.8';
+    trail.style.transition = 'opacity 0.5s ease-out';
+
+    document.body.appendChild(trail);
+
+    setTimeout(() => {
+      trail.style.opacity = '0';
+    }, 50);
+
+    setTimeout(() => {
+      trail.remove();
+    }, 600);
+  });
+
+  // Keyboard shortcuts for chaos
+  window.addEventListener('keydown', e => {
+    if (e.key === 'c') {
+      randomPopup();
+    }
+    if (e.key === 'r') {
+      applyRandomThemeToBody();
+      populate();
+    }
+    if (e.key === 'p') {
+      alert("You pressed P! Panic!");
+    }
+  });
+
+  // Initial load
+  function randomChoice(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function applyRandomThemeToBody() {
+    const theme = randomChoice(themes);
+    document.body.style.background = theme.background;
+    document.body.style.color = theme.color;
+    document.body.style.fontFamily = theme.font;
+  }
+
+  function populate() {
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+
+    for (let i = 0; i < 30; i++) {
+      container.appendChild(createSection());
+    }
+  }
+
+  function createSection() {
+    const section = document.createElement("section");
+    const h2 = document.createElement("h2");
+    const p = document.createElement("p");
+
+    h2.textContent = randomChoice(titles);
+    p.textContent = randomChoice(messages);
+
+    if (Math.random() > 0.8) h2.classList.add("tooltip");
+    if (Math.random() > 0.6) section.classList.add("rotated");
+    if (Math.random() > 0.7) section.classList.add("sideways");
+
+    section.appendChild(h2);
+    section.appendChild(p);
+
+    const theme = randomChoice(themes);
+    section.style.background = theme.background;
+    section.style.fontFamily = theme.font;
+    section.style.color = theme.color;
+    section.style.border = theme.border;
+    section.style.animation = theme.animation;
+
+    if (Math.random() > 0.6) {
+      const btn = document.createElement("button");
+      btn.textContent = "Explode";
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        spawnMiniPopup(section);
+      };
+      section.appendChild(btn);
+    }
+
+    section.addEventListener('click', () => {
+      section.style.animation = 'shake 0.5s 4';
+      setTimeout(() => {
+        section.style.animation = theme.animation;
+      }, 2000);
+    });
+
+    return section;
+  }
+
+  function randomPopup() {
+    const popupTexts = [
+      {title: "System Warning!", text: "Your vibes are dangerously low."},
+      {title: "Error 666", text: "Banana peel on server floor."},
+      {title: "Notice", text: "You have been cursed by bad design."},
+      {title: "Heads up!", text: "Socks not matching. Risk level: high."},
+      {title: "Alert!", text: "Your cursor is a clown. Embrace it."},
+      {title: "404 Fun Fact", text: "Clowns prefer purple over red."}
+    ];
+
+    const popupData = randomChoice(popupTexts);
+
+    const popup = document.createElement("div");
+    popup.classList.add("popup");
+
+    popup.style.top = (50 + Math.random() * (window.innerHeight - 300)) + "px";
+    popup.style.left = (50 + Math.random() * (window.innerWidth - 350)) + "px";
+
+    const h3 = document.createElement("h3");
+    h3.textContent = popupData.title;
+    popup.appendChild(h3);
+
+    const p = document.createElement("p");
+    p.textContent = popupData.text;
+    popup.appendChild(p);
+
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "✖";
+    closeBtn.classList.add("close-btn");
+    closeBtn.onclick = () => popup.remove();
+    popup.appendChild(closeBtn);
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+      if (popup.parentNode) popup.remove();
+    }, 10000 + Math.random() * 5000);
+  }
+
+  function spawnMiniPopup(parentSection) {
+    const miniPopup = document.createElement('div');
+    miniPopup.classList.add('popup');
+    miniPopup.style.width = '180px';
+    miniPopup.style.height = '100px';
+
+    const rect = parentSection.getBoundingClientRect();
+    miniPopup.style.top = (window.scrollY + rect.top + rect.height / 2 + (Math.random() * 100 - 50)) + "px";
+    miniPopup.style.left = (window.scrollX + rect.left + rect.width / 2 + (Math.random() * 100 - 50)) + "px";
+
+    const h3 = document.createElement('h3');
+    h3.textContent = "Mini Boom!";
+    miniPopup.appendChild(h3);
+
+    const p = document.createElement('p');
+    p.textContent = "You triggered a mini popup!";
+    miniPopup.appendChild(p);
+
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = "✖";
+    closeBtn.classList.add('close-btn');
+    closeBtn.onclick = () => miniPopup.remove();
+    miniPopup.appendChild(closeBtn);
+
+    document.body.appendChild(miniPopup);
+
+    setTimeout(() => {
+      if (miniPopup.parentNode) miniPopup.remove();
+    }, 7000);
+  }
+
+  applyRandomThemeToBody();
+  populate();
+
+  setInterval(() => {
+    applyRandomThemeToBody();
+    populate();
+  }, 60000);
+
+  setInterval(randomPopup, 6000);
 </script>
 
-<body>
-    <h1>Hello, I am ineedhelponmytest!</h1>
-	<br>
-	<br>
-	<br>
-    <div class="about">
-        <h2>About Me</h2>
-        <p>I am a 14 y/o website dev and a music producer, from the United States. I make random stuff in html and electronic music in FL Studio as a hobby. Go check out my <a href="https://distrokid.com/hyperfollow/finishedlast">Music!</a></p>
-    </div>
-	<br>
-	<br>
-	<br>
-    <div class="container">
-        <div class="card">
-            <h2>My Music</h2>
-            <p>Listen to my music (Finished Last) on Spotify, Soundcloud, Apple Music, and more!</p>
-            <a href="https://distrokid.com/hyperfollow/finishedlast"><button>Listen Now!</button></a>
-        </div>
-		<br>
-       <div class="card">
-            <h2>SinePrank</h2>
-            <p>Play a high-pitched noise to prank your class.</p>
-            <a href="https://ineedhelponmytest.com/sineprank/"><button>View SinePrank</button></a>
-        </div>
-		<br>
-		<div class="card">
-            <h2>ProEdit - Beta Version</h2>
-            <p>ProEdit is a free opensource code editor (Beta)</p>
-            <a href="https://ineedhelponmytest.com/proedit/"><button>More Info</button></a>
-        </div>
-		<br>
-	    <div class="card">
-            <h2>Browser Pong</h2>
-			<p>Pong remade and redesigned in HTML!</p>
-            <a href="https://ineedhelponmytest.com/pong/"><button>View Browser Pong</button></a>
-        </div>
-		<br>
-    </div>
 </body>
 </html>
