@@ -2,127 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ineedhelponmytest.com</title>
+  <link rel="icon" type="image/png" href="https://atlas-content-cdn.pixelsquid.com/assets_v2/309/3099879802165794400/previews/G03-200x200.jpg">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
-
-    * {
-      box-sizing: border-box;
-      font-family: 'Silkscreen', monospace;
-    }
-
+	@import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&display=swap');
+  </style>
+  <style>
     body {
-      margin: 0;
-      background: teal;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    	margin: 0;
+      	background-image: url("https://www.greenpeace.org.au/static/planet4-australiapacific-stateless/2024/02/578210d6-tumblr_njzjlss9h71tv1qiho1_1280.gif");
+        background-repeat: no-repeat;
+  	background-size: cover;
+  	background-position: center center;
+    	/* background-attachment: fixed; */
+    	image-rendering: pixelated;
+      	justify-content: center;
+      	align-items: center;
+      	height: 100vh;
+    	color: black;
+    	text-align: center;
+    	font-family: "Coral Pixels", serif;
+        font-weight: 400;
+  	font-style: normal;
+	overflow: hidden;
     }
 
-    .window {
-      width: 500px;
-      background: #c0c0c0;
-      border: 2px solid #000;
-      box-shadow: 6px 6px #333;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .title-bar {
-      background: #000080;
-      color: white;
-      padding: 8px;
-      font-size: 14px;
-      text-shadow: 1px 1px black;
-    }
-
-    .nav-bar {
-      display: flex;
-      background: #e0e0e0;
-      border-bottom: 2px solid #aaa;
-    }
-
-    .nav-bar button {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      background: #d4d0c8;
-      cursor: pointer;
-      transition: all 0.1s ease;
-      border-right: 1px solid #aaa;
-    }
-
-    .nav-bar button:hover {
-      background: #fff;
-    }
-
-    .nav-bar button.active {
-      background: #fff;
-      font-weight: bold;
-    }
-
-    .content {
-      padding: 20px;
-      background: #fff;
-      height: 250px;
-      overflow-y: auto;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    ul {
-      padding-left: 20px;
+    a {
+	text-decoration-color: black;
     }
   </style>
 </head>
 <body>
-
-  <div class="window">
-    <div class="title-bar">Welcome To The Internet!</div>
-    <div class="nav-bar">
-      <button class="active" onclick="switchTab('about')">About</button>
-      <button onclick="switchTab('projects')">Projects</button>
-      <button onclick="switchTab('contact')">Contact</button>
-    </div>
-    <div class="content" id="content">
-      <h3>About Me</h3>
-      <p>Hi, My name is Ben! I'm a 14 y/o website dev & music producer from california! Check out my projects on the "Projects" tab!.</p>
-    </div>
-  </div>
+  <h1>ineedhelponmytest.com</h1>
+  <h3>Check out <a id="changing-link" href="#"></a>.</h3>
+  <p>Contact: ben@ineedhelponmtest.com</p>
+  <p>Check out <a href="https://distrokid.com/hyperfollow/finishedlast">My Music</a>.</p>
 
   <script>
-    const content = document.getElementById('content');
-    const buttons = document.querySelectorAll('.nav-bar button');
+    document.addEventListener('DOMContentLoaded', () => {
+    // Array of objects, each containing a text and a URL for the link
+    const linksArray = [
+        { text: "SinePrank", url: "https://ineedhelponmytest.com/sineprank/" },
+        { text: "The Terminal of Truth (Buggy)", url: "https://ineedhelponmytest.com/tot/" },
+        { text: "Joe AI (WIP)", url: "https://ineedhelponmytest.com/joe/" },
+        { text: "The Topple Search Bar", url: "https://ineedhelponmytest.com/topple/" }
+    ];
 
-    const tabs = {
-      about: `<h3>About Me</h3><p>Hi, My name is Ben! I'm a 14 y/o website dev & music producer from california! Check out my projects on the "Projects" tab, or listen to my music via the "Music" tab.</p>`,
-      projects: `
-      <h3>Projects</h3>
-      <ul>
-		<li><a href="https://ineedhelponmytest.com/sineprank/" target="_blank">SinePrank - Prank your friends!</a></li>
-        <li><a href="https://ineedhelponmytest.com/tot/" target="_blank">Terminal of Truth (In Development)</a></li>
-		<li><a href="https://ineedhelponmytest.com/sector/" target="_blank">Sector - Share your files securly</a></li>
-  		<li><a href="https://ineedhelponmytest.com/joe/" target="_blank">Joe AI (In Development)</a></li>
-		<li><a href="https://ineedhelponmytest.com/topple/" target="_blank">The Topple Search Bar</a></li>
-      </ul>
-	  `,
-      contact: `<h3>Contact</h3><p>Email: ben@ineedhelponmytest.com<br>GitHub: @ineedhelponmytest</p>`
-    };
+    const changingLink = document.getElementById('changing-link');
+    let linkIndex = 0;
 
-    function switchTab(tab) {
-      content.innerHTML = tabs[tab];
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+    function changeLink() {
+        // Start fade-out effect
+        changingLink.style.opacity = 0;
+
+        // Change the link after the fade-out starts
+        setTimeout(() => {
+            linkIndex = (linkIndex + 1) % linksArray.length;
+            changingLink.textContent = linksArray[linkIndex].text;
+            changingLink.href = linksArray[linkIndex].url;
+            
+            // Start fade-in effect
+            changingLink.style.opacity = 1;
+        }, 0);
     }
-  </script>
 
+    // Set the initial link content
+    changingLink.textContent = linksArray[0].text;
+    changingLink.href = linksArray[0].url;
+
+    // Call changeLink every 5 seconds
+    setInterval(changeLink, 5000);
+});
+  </script>
 </body>
 </html>
-
-
-
