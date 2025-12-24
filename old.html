@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ineedhelponmytest.com</title>
+  <link rel="icon" type="image/png" href="https://atlas-content-cdn.pixelsquid.com/assets_v2/309/3099879802165794400/previews/G03-200x200.jpg">
+  <style>
+	@import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&display=swap');
+  </style>
+  <style>
+    body {
+    	margin: 0;
+      	background-image: url("https://www.greenpeace.org.au/static/planet4-australiapacific-stateless/2024/02/578210d6-tumblr_njzjlss9h71tv1qiho1_1280.gif");
+        background-repeat: no-repeat;
+  	background-size: cover;
+  	background-position: center center;
+    	/* background-attachment: fixed; */
+    	image-rendering: pixelated;
+      	justify-content: center;
+      	align-items: center;
+      	height: 100vh;
+    	color: black;
+    	text-align: center;
+    	font-family: "Coral Pixels", serif;
+        font-weight: 400;
+  	font-style: normal;
+	overflow: hidden;
+    }
+
+    a {
+	text-decoration-color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1>ineedhelponmytest.com</h1>
+  <h3>Check out <a id="changing-link" href="#"></a>.</h3>
+  <p><a href="https://ineedhelponmytest.com/links">Links to all my projects and pages!</a></p>
+  <p>Contact: ben@ineedhelponmtest.com</p>
+  <p>Check out <a href="https://distrokid.com/hyperfollow/finishedlast">My Music</a>.</p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Array of objects, each containing a text and a URL for the link
+    const linksArray = [
+        { text: "SinePrank", url: "https://ineedhelponmytest.com/sineprank/" },
+		{ text: "OpenWiki", url: "https://ineedhelponmytest.com/open-wiki/" },
+        { text: "The Terminal of Truth (Buggy)", url: "https://ineedhelponmytest.com/tot/" },
+        { text: "Anyone Can Edit This Page", url: "https://ineedhelponmytest.com/anyone-can-edit-this-page" }
+    ];
+
+    const changingLink = document.getElementById('changing-link');
+    let linkIndex = 0;
+
+    function changeLink() {
+        // Start fade-out effect
+        changingLink.style.opacity = 0;
+
+        // Change the link after the fade-out starts
+        setTimeout(() => {
+            linkIndex = (linkIndex + 1) % linksArray.length;
+            changingLink.textContent = linksArray[linkIndex].text;
+            changingLink.href = linksArray[linkIndex].url;
+            
+            // Start fade-in effect
+            changingLink.style.opacity = 1;
+        }, 0);
+    }
+
+    // Set the initial link content
+    changingLink.textContent = linksArray[0].text;
+    changingLink.href = linksArray[0].url;
+
+    // Call changeLink every 5 seconds
+    setInterval(changeLink, 5000);
+});
+  </script>
+</body>
+</html>
+
+
+
